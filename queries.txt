@@ -1,0 +1,44 @@
+create database mobile_store;
+
+use mobile_store;
+
+-- Users Table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Products Table
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    image VARCHAR(255)
+);
+
+-- Cart Table
+CREATE TABLE cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    product_id INT,
+    quantity INT DEFAULT 1,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+
+INSERT INTO products (name, description, price, image) VALUES 
+('iPhone 14', 'The latest iPhone with a stunning design and exceptional performance.', 999.00, 'https://m.media-amazon.com/images/I/61WUSYIQdKL._AC_SL1500_.jpg'),
+('Samsung Galaxy S23', 'A flagship smartphone with a vibrant display and top-notch camera.', 899.00, 'https://m.media-amazon.com/images/I/61kfOWlQLsL._AC_SL1000_.jpg'),
+('Google Pixel 7', 'A smartphone that takes incredible photos with stock Android experience.', 599.00, 'https://m.media-amazon.com/images/I/71n1Bn04lJL._AC_SL1500_.jpg'),
+('OnePlus 11', 'Fast and smooth performance with an ultra-responsive display.', 749.00, 'https://m.media-amazon.com/images/I/51yMS1ecBrL._AC_SL1000_.jpg'),
+('Xiaomi 12 Pro', 'A powerful device with fast charging and excellent camera capabilities.', 749.00, 'https://i5.walmartimages.com/asr/0c840765-8065-4a1c-8465-05ddfd0c8514.1f96daa734cc11439c5a3bcf99c11b5c.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF'),
+('Sony Xperia 1 IV', 'A premium smartphone designed for photography and video enthusiasts.', 1299.00, 'https://m.media-amazon.com/images/I/51nfiDXOOqL._AC_SL1500_.jpg'),
+('Motorola Edge 30 Ultra', 'A smartphone with impressive specs and a stunning design.', 899.00, 'https://m.media-amazon.com/images/I/61Mnu9VtDML._AC_SL1500_.jpg'),
+('Oppo Find X5 Pro', 'A flagship phone with a gorgeous display and advanced camera features.', 1099.00, 'https://boulanger.scene7.com/is/image/Boulanger/6932169301091_h_f_l_0?wid=1000&hei=1000'),
+('Nokia G20', 'An affordable smartphone with a long-lasting battery and decent performance.', 249.00, 'https://m.media-amazon.com/images/I/819D8qw1WxS._AC_SL1500_.jpg'),
+('Realme GT 2 Pro', 'A performance powerhouse that delivers flagship features at a lower price.', 749.00, 'https://phonesstorekenya.com/wp-content/uploads/2022/01/Realme-GT-2-Pro.jpg');
+
